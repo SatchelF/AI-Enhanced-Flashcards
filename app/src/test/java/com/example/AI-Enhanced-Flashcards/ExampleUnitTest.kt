@@ -1,4 +1,4 @@
-package com.example.cs3200firebasestarter
+package com.example.`AI-Enhanced-Flashcards`
 
 import org.junit.Test
 

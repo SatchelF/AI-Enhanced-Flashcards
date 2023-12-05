@@ -1,4 +1,4 @@
-package com.example.cs3200firebasestarter.ui.screens
+package com.example.`AI-Enhanced-Flashcards`.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
@@ -8,8 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.example.cs3200firebasestarter.ui.navigation.Routes
-import com.example.cs3200firebasestarter.ui.repositories.UserRepository
+import com.example.`AI-Enhanced-Flashcards`.ui.navigation.Routes
+import com.example.`AI-Enhanced-Flashcards`.ui.repositories.UserRepository
 import kotlinx.coroutines.*
 
 @Composable

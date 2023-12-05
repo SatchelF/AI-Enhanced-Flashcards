@@ -1,4 +1,4 @@
-package com.example.cs3200firebasestarter.ui.navigation
+package com.example.`AI-Enhanced-Flashcards`.ui.navigation
 
 data class Screen(val route: String)
 

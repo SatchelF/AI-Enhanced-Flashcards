@@ -1,4 +1,4 @@
-package com.example.cs3200firebasestarter.ui.theme
+package com.example.`AI-Enhanced-Flashcards`.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

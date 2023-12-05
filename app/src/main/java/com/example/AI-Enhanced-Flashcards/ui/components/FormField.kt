@@ -1,4 +1,4 @@
-package com.example.cs3200firebasestarter.ui.components
+package com.example.`AI-Enhanced-Flashcards`.ui.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth

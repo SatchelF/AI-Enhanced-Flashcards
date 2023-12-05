@@ -1,4 +1,4 @@
-package com.example.cs3200firebasestarter.ui.navigation
+package com.example.`AI-Enhanced-Flashcards`.ui.navigation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
@@ -14,8 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.*
-import com.example.cs3200firebasestarter.ui.repositories.UserRepository
-import com.example.cs3200firebasestarter.ui.screens.*
+import com.example.`AI-Enhanced-Flashcards`.ui.repositories.UserRepository
+import com.example.`AI-Enhanced-Flashcards`.ui.screens.*
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)

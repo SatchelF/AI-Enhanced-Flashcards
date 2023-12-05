@@ -1,4 +1,4 @@
-package com.example.cs3200firebasestarter
+package com.example.`AI-Enhanced-Flashcards`
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

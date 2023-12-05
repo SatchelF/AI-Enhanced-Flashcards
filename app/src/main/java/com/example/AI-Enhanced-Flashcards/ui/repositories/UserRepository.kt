@@ -1,4 +1,4 @@
-package com.example.cs3200firebasestarter.ui.repositories
+package com.example.`AI-Enhanced-Flashcards`.ui.repositories
 
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
