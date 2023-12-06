@@ -5,6 +5,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -48,13 +49,21 @@ fun CreateSetScreen(navHostController: NavHostController, viewModel: CreateSetVi
         }
 
         Spacer(modifier = Modifier.height(16.dp))
+        Row {
+            TextButton(onClick = { navHostController.popBackStack() }) {
+                Text(text = "Cancel")
+            }
+            Button(
+                onClick = { scope.launch {
+                    viewModel.createFlashCardSet()
+                    navHostController.popBackStack()
+                } }
 
-        Button(
-            onClick = { scope.launch { viewModel.createFlashCardSet() } },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Create Set")
+            ) {
+                Text("Create Set")
+            }
         }
+
     }
 }
 
