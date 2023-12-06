@@ -17,6 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.cs3200firebasestarter.ui.models.FlashcardSet
+import com.google.firebase.Timestamp
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @Composable
 fun FlashcardSetListItem(flashcardSet: FlashcardSet) {
@@ -41,10 +45,15 @@ fun FlashcardSetListItem(flashcardSet: FlashcardSet) {
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "Created: ${flashcardSet.createdDate}",
+                    text = "Created: ${flashcardSet.createdDate!!.toFormattedString()}",
                     style = MaterialTheme.typography.bodySmall
                 )
             }
         }
     }
+}
+fun Timestamp.toFormattedString(): String {
+    val date = Date(seconds * 1000)
+    val format = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault())
+    return format.format(date)
 }
