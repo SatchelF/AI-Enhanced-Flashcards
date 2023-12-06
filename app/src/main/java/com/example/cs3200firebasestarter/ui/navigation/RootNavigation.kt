@@ -1,5 +1,7 @@
 package com.example.cs3200firebasestarter.ui.navigation
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -61,6 +63,8 @@ fun RootNavigation() {
                 if (currentDestination?.hierarchy?.none { it.route == Routes.launchNavigation.route || it.route == Routes.splashScreen.route } == true) {
                     TopAppBar(
                         title = { Text(text = "Flashcards")},
+                        modifier = Modifier
+                            .background(MaterialTheme.colorScheme.primaryContainer),
                         navigationIcon = {
                             IconButton(onClick = {
                                 scope.launch {
@@ -75,13 +79,7 @@ fun RootNavigation() {
                     )
                 }
             },
-            floatingActionButton = {
-                if (currentDestination?.hierarchy?.none { it.route == Routes.launchNavigation.route || it.route == Routes.splashScreen.route } == true){
-                    FloatingActionButton(onClick = {}) {
-                        Icon(imageVector = Icons.Default.Add, contentDescription = "Add Item")
-                    }
-                }
-            },
+
 
         ) {
 
@@ -94,6 +92,8 @@ fun RootNavigation() {
                     composable(route = Routes.launch.route) { LaunchScreen(navController) }
                     composable(route = Routes.signIn.route) { SignInScreen(navController) }
                     composable(route = Routes.signUp.route) { SignUpScreen(navController) }
+                    composable(route = Routes.createSet.route) { CreateSetScreen(navController) }
+
                 }
                 navigation(route = Routes.appNavigation.route, startDestination = Routes.home.route) {
                     composable(route = Routes.home.route) { HomeScreen(navController) }
