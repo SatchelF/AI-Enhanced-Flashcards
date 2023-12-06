@@ -18,31 +18,31 @@ fun LaunchScreen(navHostController: NavHostController) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp), // Adds padding around the entire column
-            verticalArrangement = Arrangement.Center, // Centers the column contents vertically
-            horizontalAlignment = Alignment.CenterHorizontally // Centers the column contents horizontally
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = "Welcome to AI-Enhanced Flashcards!",
                 style = MaterialTheme.typography.headlineMedium,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(bottom = 16.dp) // Adds space below the text
+                modifier = Modifier.padding(bottom = 16.dp)
             )
             Text(
                 text = "The best app to revolutionize your study habits.",
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(bottom = 24.dp) // Adds more space below this text
+                modifier = Modifier.padding(bottom = 24.dp)
             )
             Text(
                 text = "Create an account to get started.",
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(bottom = 24.dp) // Adds space below this text
+                modifier = Modifier.padding(bottom = 24.dp)
             )
             Button(
                 onClick = { navHostController.navigate(Routes.signUp.route) },
-                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp) // Button occupies full width with padding below
+                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
             ) {
                 Text(text = "Create Account")
             }
