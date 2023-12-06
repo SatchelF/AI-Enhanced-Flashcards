@@ -60,7 +60,7 @@ fun RootNavigation() {
             topBar = {
                 if (currentDestination?.hierarchy?.none { it.route == Routes.launchNavigation.route || it.route == Routes.splashScreen.route } == true) {
                     TopAppBar(
-                        title = { Text(text = "My App")},
+                        title = { Text(text = "Flashcards")},
                         navigationIcon = {
                             IconButton(onClick = {
                                 scope.launch {
