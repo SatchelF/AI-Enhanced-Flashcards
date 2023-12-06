@@ -16,15 +16,13 @@ import kotlinx.coroutines.*
 fun SplashScreen(navHostController: NavHostController) {
 
     LaunchedEffect(true) {
-        val loginStatusCheck = async {
-            // TODO: check to see if user is logged in
-        }
+
         // wait for 3 seconds or until the login check is
         // done before navigating
         delay(1000)
-        loginStatusCheck.await()
         navHostController.navigate(
-            if (UserRepository.getCurrentUserId() == null) Routes.launchNavigation.route else Routes.appNavigation.route) {
+            if (UserRepository.getCurrentUserId() == null)
+                Routes.launchNavigation.route else Routes.appNavigation.route) {
             // makes it so that we can't get back to the
             // splash screen by pushing the back button
             popUpTo(navHostController.graph.findStartDestination().id) {

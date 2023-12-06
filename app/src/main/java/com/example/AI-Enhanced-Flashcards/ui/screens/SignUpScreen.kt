@@ -3,6 +3,7 @@ package com.example.`AI-Enhanced-Flashcards`.ui.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.*
 import androidx.compose.ui.text.TextStyle
@@ -21,6 +22,11 @@ fun SignUpScreen(navHostController: NavHostController) {
     val viewModel: SignUpViewModel = viewModel()
     val scope = rememberCoroutineScope()
     val state = viewModel.uiState
+    LaunchedEffect(state.signUpSuccess){
+        navHostController.navigate(Routes.appNavigation.route){
+            popUpTo(0)
+        }
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
