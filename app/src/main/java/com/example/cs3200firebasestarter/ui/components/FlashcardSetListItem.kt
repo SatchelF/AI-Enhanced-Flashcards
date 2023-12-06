@@ -29,6 +29,7 @@ fun FlashcardSetListItem(flashcardSet: FlashcardSet) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 16.dp, horizontal = 8.dp)
+            .height(130.dp)
     ) {
         Box(
             modifier = Modifier
@@ -46,7 +47,7 @@ fun FlashcardSetListItem(flashcardSet: FlashcardSet) {
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = "Created: ${flashcardSet.createdDate!!.toFormattedString()}",
-                    style = MaterialTheme.typography.bodySmall
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
         }
