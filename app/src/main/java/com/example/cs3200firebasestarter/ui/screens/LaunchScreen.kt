@@ -11,30 +11,39 @@ import com.example.cs3200firebasestarter.ui.navigation.Routes
 
 @Composable
 fun LaunchScreen(navHostController: NavHostController) {
-    Column(
+    Surface(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceAround
+        color = MaterialTheme.colorScheme.background
     ) {
-
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp), // Adds padding around the entire column
+            verticalArrangement = Arrangement.Center, // Centers the column contents vertically
+            horizontalAlignment = Alignment.CenterHorizontally // Centers the column contents horizontally
+        ) {
             Text(
-                text = "Welcome!",
+                text = "Welcome to AI-Enhanced Flashcards!",
                 style = MaterialTheme.typography.headlineMedium,
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(bottom = 16.dp) // Adds space below the text
             )
             Text(
-                text = "We guarantee this is best app you will ever use!",
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                text = "The best app to revolutionize your study habits.",
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(bottom = 24.dp) // Adds more space below this text
             )
             Text(
-                text = "Before you continue you will need to create an account",
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                text = "Create an account to get started.",
+                style = MaterialTheme.typography.bodyMedium,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(bottom = 24.dp) // Adds space below this text
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            Button(onClick = { navHostController.navigate(Routes.signUp.route) }) {
+            Button(
+                onClick = { navHostController.navigate(Routes.signUp.route) },
+                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp) // Button occupies full width with padding below
+            ) {
                 Text(text = "Create Account")
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
