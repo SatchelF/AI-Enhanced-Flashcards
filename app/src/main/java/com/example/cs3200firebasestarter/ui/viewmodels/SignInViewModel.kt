@@ -1,12 +1,12 @@
-package com.example.`AI-Enhanced-Flashcards`.ui.viewmodels
+package com.example.cs3200firebasestarter.ui.viewmodels
 
 import android.app.Application
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
-import com.example.`AI-Enhanced-Flashcards`.ui.repositories.SignInException
-import com.example.`AI-Enhanced-Flashcards`.ui.repositories.UserRepository
+import com.example.cs3200firebasestarter.ui.repositories.SignInException
+import com.example.cs3200firebasestarter.ui.repositories.UserRepository
 
 class SignInScreenState {
     var email by mutableStateOf("")

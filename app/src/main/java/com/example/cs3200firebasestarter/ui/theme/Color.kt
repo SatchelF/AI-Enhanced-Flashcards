@@ -1,4 +1,4 @@
-package com.example.`AI-Enhanced-Flashcards`.ui.theme
+package com.example.cs3200firebasestarter.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val md_theme_light_primary = Color(0xFF6750A4)

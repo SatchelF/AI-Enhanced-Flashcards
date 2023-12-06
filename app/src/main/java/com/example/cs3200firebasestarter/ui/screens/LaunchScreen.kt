@@ -1,4 +1,4 @@
-package com.example.`AI-Enhanced-Flashcards`.ui.screens
+package com.example.cs3200firebasestarter.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -7,7 +7,7 @@ import androidx.compose.ui.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.`AI-Enhanced-Flashcards`.ui.navigation.Routes
+import com.example.cs3200firebasestarter.ui.navigation.Routes
 
 @Composable
 fun LaunchScreen(navHostController: NavHostController) {

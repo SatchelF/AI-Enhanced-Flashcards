@@ -1,4 +1,4 @@
-package com.example.`AI-Enhanced-Flashcards`.ui.repositories
+package com.example.cs3200firebasestarter.ui.repositories
 
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.ktx.auth

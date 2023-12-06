@@ -1,4 +1,4 @@
-package com.example.`AI-Enhanced-Flashcards`.ui.screens
+package com.example.cs3200firebasestarter.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -11,10 +11,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.`AI-Enhanced-Flashcards`.ui.components.FormField
-import com.example.`AI-Enhanced-Flashcards`.ui.navigation.Routes
-import com.example.`AI-Enhanced-Flashcards`.ui.repositories.UserRepository
-import com.example.`AI-Enhanced-Flashcards`.ui.viewmodels.SignUpViewModel
+import com.example.cs3200firebasestarter.ui.components.FormField
+import com.example.cs3200firebasestarter.ui.navigation.Routes
+import com.example.cs3200firebasestarter.ui.repositories.UserRepository
+import com.example.cs3200firebasestarter.ui.viewmodels.SignUpViewModel
 import kotlinx.coroutines.launch
 
 @Composable

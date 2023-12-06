@@ -1,4 +1,4 @@
-package com.example.`AI-Enhanced-Flashcards`.ui.theme
+package com.example.cs3200firebasestarter.ui.theme
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,6 +9,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 
 
 private val DarkColorScheme = darkColorScheme(

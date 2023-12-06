@@ -1,4 +1,4 @@
-package com.example.`AI-Enhanced-Flashcards`.ui.screens
+package com.example.cs3200firebasestarter.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
@@ -17,7 +17,7 @@ fun HomeScreen(navHostController: NavHostController) {
         verticalArrangement = Arrangement.SpaceAround
     ) {
         Text(
-            text = "Home Screen!",
+            text = "test",
             modifier = Modifier.fillMaxWidth(),
             style = MaterialTheme.typography.headlineLarge,
             textAlign = TextAlign.Center

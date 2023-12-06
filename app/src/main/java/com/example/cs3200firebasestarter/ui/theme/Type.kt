@@ -1,4 +1,4 @@
-package com.example.`AI-Enhanced-Flashcards`.ui.theme
+package com.example.cs3200firebasestarter.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
