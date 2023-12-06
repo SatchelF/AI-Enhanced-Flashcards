@@ -51,12 +51,11 @@ fun CreateSetScreen(navHostController: NavHostController, viewModel: CreateSetVi
         Spacer(modifier = Modifier.height(16.dp))
         Row {
             TextButton(onClick = { navHostController.popBackStack() }) {
-                Text(text = "Cancel")
+                Text(text = "back")
             }
             Button(
                 onClick = { scope.launch {
                     viewModel.createFlashCardSet()
-                    navHostController.popBackStack()
                 } }
 
             ) {
