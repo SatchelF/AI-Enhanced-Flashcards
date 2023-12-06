@@ -56,7 +56,7 @@ class SignUpViewModel(application: Application): AndroidViewModel(application) {
             return
         }
         try {
-            UserRepository.createUser(uiState.email, uiState.password)\
+            UserRepository.createUser(uiState.email, uiState.password)
             uiState.signUpSuccess = true
         }
         catch (e:SignUpException) {

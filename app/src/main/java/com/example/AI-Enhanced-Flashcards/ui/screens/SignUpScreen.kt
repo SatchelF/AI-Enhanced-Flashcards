@@ -23,8 +23,10 @@ fun SignUpScreen(navHostController: NavHostController) {
     val scope = rememberCoroutineScope()
     val state = viewModel.uiState
     LaunchedEffect(state.signUpSuccess){
-        navHostController.navigate(Routes.appNavigation.route){
-            popUpTo(0)
+        if(state.signUpSuccess) {
+            navHostController.navigate(Routes.appNavigation.route) {
+                popUpTo(0)
+            }
         }
     }
     Column(
