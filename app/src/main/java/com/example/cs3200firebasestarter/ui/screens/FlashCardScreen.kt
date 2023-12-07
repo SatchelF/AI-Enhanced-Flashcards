@@ -1,5 +1,6 @@
 package com.example.cs3200firebasestarter.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -28,16 +29,20 @@ import androidx.navigation.NavHostController
 import com.example.cs3200firebasestarter.ui.viewmodels.CreateSetViewModel
 import kotlinx.coroutines.launch
 import com.example.cs3200firebasestarter.ui.components.Flashcard
+import com.example.cs3200firebasestarter.ui.navigation.Routes
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FlashCardScreen(
     navHostController: NavHostController,
-    viewModel: CreateSetViewModel = viewModel()
+    setId: String?
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         // Main content
+        if (setId != null) {
+            Text(text = setId)
+        }
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)) {
@@ -60,22 +65,26 @@ fun FlashCardScreen(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             // Left arrow FAB
-            FloatingActionButton(modifier = Modifier.padding(end=50.dp).size(26.dp), onClick = { /* Handle left arrow click */ }) {
+            FloatingActionButton(modifier = Modifier
+                .padding(end = 50.dp)
+                .size(26.dp), onClick = { /* Handle left arrow click */ }) {
                 Icon(Icons.Default.ArrowBack, contentDescription = "Previous")
             }
             // Text in the middle
             Text(text = "x/x", style = MaterialTheme.typography.headlineSmall)
             // Right arrow FAB
-            FloatingActionButton(modifier = Modifier.padding(start =50.dp).size(26.dp),onClick = { /* Handle right arrow click */ }) {
+            FloatingActionButton(modifier = Modifier
+                .padding(start = 50.dp)
+                .size(26.dp),onClick = { /* Handle right arrow click */ }) {
                 Icon(Icons.Default.ArrowForward, contentDescription = "Next")
             }
 
         }
         // Plus FAB at the bottom right for creating a new flashcard
         FloatingActionButton(
-            onClick = { /* Handle create new flashcard click */ },
+            onClick = {  navHostController.navigate(Routes.createFlashCardScreen.route) },
             modifier = Modifier
-                .padding(start= 370.dp, top = 16.dp)
+                .padding(start = 370.dp, top = 16.dp)
                 .size(30.dp)
         ) {
             Icon(Icons.Default.Create, contentDescription = "Create New Flashcard")

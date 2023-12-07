@@ -1,5 +1,6 @@
 package com.example.cs3200firebasestarter.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,7 +34,7 @@ fun FlashcardSetListItem(flashcardSet: FlashcardSet,  navHostController: NavCont
             .padding(vertical = 16.dp, horizontal = 8.dp)
             .height(130.dp)
             .clickable{
-                navHostController.navigate(Routes.flashCardScreen.route)
+                navHostController.navigate("flashCardScreen?id=${flashcardSet.id}")
             }
     ) {
         Box(
