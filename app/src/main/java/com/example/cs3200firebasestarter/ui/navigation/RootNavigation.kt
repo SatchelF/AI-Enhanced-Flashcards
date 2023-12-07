@@ -93,6 +93,7 @@ fun RootNavigation() {
                     composable(route = Routes.signIn.route) { SignInScreen(navController) }
                     composable(route = Routes.signUp.route) { SignUpScreen(navController) }
                     composable(route = Routes.createSet.route) { CreateSetScreen(navController) }
+                    composable(route = Routes.flashCardScreen.route) { FlashCardScreen(navController) }
 
                 }
                 navigation(route = Routes.appNavigation.route, startDestination = Routes.home.route) {

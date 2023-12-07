@@ -47,7 +47,7 @@ fun HomeScreen(navHostController: NavHostController) {
                 .padding(innerPadding)
         ) {
             items(state.sets, key = { it.id ?: "" }) {
-                FlashcardSetListItem(flashcardSet = it)
+                FlashcardSetListItem(flashcardSet = it, navHostController)
             }
         }
     }

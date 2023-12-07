@@ -1,5 +1,6 @@
 package com.example.cs3200firebasestarter.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,21 +16,25 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.example.cs3200firebasestarter.ui.models.FlashcardSet
+import com.example.cs3200firebasestarter.ui.navigation.Routes
 import com.google.firebase.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 @Composable
-fun FlashcardSetListItem(flashcardSet: FlashcardSet) {
+fun FlashcardSetListItem(flashcardSet: FlashcardSet,  navHostController: NavController) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 16.dp, horizontal = 8.dp)
             .height(130.dp)
+            .clickable{
+                navHostController.navigate(Routes.flashCardScreen.route)
+            }
     ) {
         Box(
             modifier = Modifier
@@ -55,6 +60,6 @@ fun FlashcardSetListItem(flashcardSet: FlashcardSet) {
 }
 fun Timestamp.toFormattedString(): String {
     val date = Date(seconds * 1000)
-    val format = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault())
+    val format = SimpleDateFormat("MM-dd-yyyy HH:mm", Locale.getDefault())
     return format.format(date)
 }
