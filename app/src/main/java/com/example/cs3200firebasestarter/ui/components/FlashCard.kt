@@ -40,7 +40,21 @@ import kotlinx.coroutines.launch
 fun Flashcard(flashcard: Flashcard) {
     val rotation = remember { Animatable(0f) }
     val isFlipped = remember { mutableStateOf(false) }
-    val displayedText = remember { mutableStateOf("front") }
+
+    // Determine the initial text based on the flip state
+    val initialText = if (isFlipped.value) flashcard.back else flashcard.front
+
+    // State for displayed text and type
+    val displayedText = remember { mutableStateOf(initialText) }
+    val displayedType = remember { mutableStateOf(flashcard.type) }
+
+    // Update text and type when the flashcard changes
+    LaunchedEffect(flashcard) {
+        isFlipped.value = false
+        rotation.snapTo(0f)
+        displayedText.value = flashcard.front // Default to front text when a new card is loaded
+        displayedType.value = flashcard.type
+    }
 
     // Animation duration
     val animationDuration = 500 // 500ms for a smoother flip
@@ -51,8 +65,7 @@ fun Flashcard(flashcard: Flashcard) {
             animationSpec = tween(durationMillis = animationDuration)
         ).apply {
             // Update the text only after the flip animation completes
-            if (isFlipped.value) displayedText.value = flashcard.back.toString()
-            else displayedText.value = flashcard.front.toString()
+            displayedText.value = if (isFlipped.value) flashcard.back else flashcard.front
         }
     }
 
@@ -87,14 +100,14 @@ fun Flashcard(flashcard: Flashcard) {
                         .padding(16.dp)
                 ) {
                     Text(
-                        text = flashcard.type.toString(),
+                        text = displayedType.value.toString(),
                         modifier = Modifier.align(Alignment.Start),
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
                         style = MaterialTheme.typography.titleLarge
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = displayedText.value,
+                        text = displayedText.value.toString(),
                         modifier = Modifier
                             .fillMaxWidth()
                             .weight(1f),
@@ -116,7 +129,7 @@ fun Flashcard(flashcard: Flashcard) {
                         modifier = Modifier
                             .clickable { /* Handle question mark click here */ }
                             .align(Alignment.BottomStart)
-                            .padding(8.dp), // Add some padding for spacing
+                            .padding(8.dp),
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onPrimaryContainer
                     )
@@ -133,5 +146,6 @@ fun Flashcard(flashcard: Flashcard) {
         }
     }
 }
+
 
 

@@ -59,7 +59,7 @@ fun FlashCardScreen(
                 onClick = {
                     if (currentIndex > 0) currentIndex--
                 },
-                modifier = Modifier.size(26.dp)
+                modifier = Modifier.padding(end = 35.dp).size(35.dp)
             ) {
                 Icon(Icons.Default.ArrowBack, contentDescription = "Previous")
             }
@@ -72,19 +72,21 @@ fun FlashCardScreen(
                 onClick = {
                     if (currentIndex < flashcards.size - 1) currentIndex++
                 },
-                modifier = Modifier.size(26.dp)
+                modifier = Modifier.padding(start = 35.dp).size(35.dp)
             ) {
                 Icon(Icons.Default.ArrowForward, contentDescription = "Next")
             }
         }
-
+        TextButton(modifier = Modifier.align(Alignment.BottomStart),onClick = { navHostController.popBackStack() }) {
+            Text(text = "back")
+        }
         // Plus FAB for creating a new flashcard
         FloatingActionButton(
             onClick = { navHostController.navigate("createFlashCardScreen?id=${setId}") },
             modifier = Modifier
-                .align(Alignment.BottomEnd)
+                .align(Alignment.TopEnd)
                 .padding(16.dp)
-                .size(30.dp)
+                .size(40.dp)
         ) {
             Icon(Icons.Default.Create, contentDescription = "Create New Flashcard")
         }
