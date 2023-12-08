@@ -131,7 +131,6 @@ fun Flashcard(flashcard: Flashcard,  onGenerateHint: (String, Boolean) -> Unit )
                             .clickable {
                                 val isFront = isFlipped.value
                                 val content = if (isFront) flashcard.front else flashcard.back ?: "Default Value"
-                                Log.d("Flashcard", "Question mark clicked. Content: $content")
                                 if (content != null) {
                                     onGenerateHint(content, isFront)
                                 }

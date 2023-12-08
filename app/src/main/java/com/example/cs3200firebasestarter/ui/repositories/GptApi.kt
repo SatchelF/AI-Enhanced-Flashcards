@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 interface GptApi {
     @Headers(
         "Content-Type: application/json",
-        "Authorization: Bearer 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"
+        "Authorization: Bearer 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"
     )
     @POST("/v1/completions")
     fun getCompletion(
