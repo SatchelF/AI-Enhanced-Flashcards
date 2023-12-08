@@ -1,5 +1,6 @@
 package com.example.cs3200firebasestarter.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -13,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.cs3200firebasestarter.ui.components.Flashcard
+import com.example.cs3200firebasestarter.ui.components.toFormattedString
 import com.example.cs3200firebasestarter.ui.viewmodels.FlashCardScreenViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -22,13 +24,19 @@ fun FlashCardScreen(
     setId: String?,
     viewModel: FlashCardScreenViewModel = viewModel()
 ) {
+
     // Load flashcards when the screen appears
     LaunchedEffect(setId) {
         setId?.let { viewModel.loadFlashcards(it) }
     }
 
     val flashcards = viewModel.uiState.flashcards
+    val uiState = viewModel.uiState
     var currentIndex by remember { mutableStateOf(0) }
+
+
+
+
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier
@@ -40,8 +48,47 @@ fun FlashCardScreen(
                     .weight(1f),
                 contentAlignment = Alignment.TopCenter
             ) {
+                // Use uiState properties directly
+                if (uiState.isLoading) {
+                    CircularProgressIndicator()
+                }
+
+                uiState.hint?.let { fetchedHint ->
+                    if (fetchedHint.isNotBlank()) {
+                        ElevatedCard(
+                            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 16.dp, horizontal = 8.dp)
+                                .height(130.dp)
+
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(16.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier.fillMaxSize(),
+                                    verticalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    Text(
+                                        text = fetchedHint,
+                                        style = MaterialTheme.typography.headlineMedium
+                                    )
+
+                                }
+                            }
+                        }
+                    }
+                }
                 if (flashcards.isNotEmpty()) {
-                    Flashcard(flashcard = flashcards[currentIndex])
+                    Flashcard(
+                        flashcard = flashcards[currentIndex],
+                        onGenerateHint = { content, isFront ->
+                            viewModel.sendRequest(content, isFront)
+                        }
+                    )
                 }
             }
         }

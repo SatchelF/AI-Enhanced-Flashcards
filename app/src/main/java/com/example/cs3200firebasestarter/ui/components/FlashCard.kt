@@ -1,4 +1,5 @@
 package com.example.cs3200firebasestarter.ui.components
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -37,7 +38,7 @@ import com.example.cs3200firebasestarter.ui.models.Flashcard
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 @Composable
-fun Flashcard(flashcard: Flashcard) {
+fun Flashcard(flashcard: Flashcard,  onGenerateHint: (String, Boolean) -> Unit ) {
     val rotation = remember { Animatable(0f) }
     val isFlipped = remember { mutableStateOf(false) }
 
@@ -127,12 +128,20 @@ fun Flashcard(flashcard: Flashcard) {
                     Text(
                         text = "?",
                         modifier = Modifier
-                            .clickable { /* Handle question mark click here */ }
+                            .clickable {
+                                val isFront = isFlipped.value
+                                val content = if (isFront) flashcard.front else flashcard.back ?: "Default Value"
+                                Log.d("Flashcard", "Question mark clicked. Content: $content")
+                                if (content != null) {
+                                    onGenerateHint(content, isFront)
+                                }
+                            }
                             .align(Alignment.BottomStart)
                             .padding(8.dp),
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onPrimaryContainer
                     )
+
 
                     // Flip icon button at the bottom-right
                     IconButton(
