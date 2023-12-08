@@ -1,11 +1,7 @@
-package com.example.cs3200firebasestarter.ui.screens
+package com.example.cs3200firebasestarter.ui.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,56 +9,101 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.cs3200firebasestarter.ui.viewmodels.CreateFlashcardViewModel
-import kotlinx.coroutines.launch
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CreateFlashcardScreen(navHostController: NavHostController, viewModel: CreateFlashcardViewModel = viewModel()) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        TextField(
-            value = viewModel.typeText.value,
-            onValueChange = { viewModel.frontText.value = it },
-            label = { Text("Type") }
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        // Text field for the front text of the flashcard
-        TextField(
-            value = viewModel.frontText.value,
-            onValueChange = { viewModel.frontText.value = it },
-            label = { Text("Front Text") }
-        )
+fun CreateFlashcardScreen(
+    navHostController: NavHostController,
+    setId: String,
+    viewModel: CreateFlashcardViewModel = viewModel()
+) {
+    val uiState = viewModel.uiState
 
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Text field for the back text of the flashcard
-        TextField(
-            value = viewModel.backText.value,
-            onValueChange = { viewModel.backText.value = it },
-            label = { Text("Back Text") }
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-        // Button to back out
-        Row {
-            TextButton(onClick = { navHostController.popBackStack() }) {
-                Text(text = "Back")
+    MaterialTheme {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            // Front text field
+            OutlinedTextField(
+                value = uiState.frontText,
+                onValueChange = { uiState.frontText = it },
+                label = { Text("Front Text") },
+                isError = uiState.frontTextError,
+                modifier = Modifier.fillMaxWidth()
+            )
+            if (uiState.frontTextError) {
+                Text(
+                    text = "Front text cannot be blank.",
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
             }
-            Button(
-                onClick = {
-                    viewModel.createFlashcard()
-                 }
 
-            ) {
-                Text("Create ")
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Back text field
+            OutlinedTextField(
+                value = uiState.backText,
+                onValueChange = { uiState.backText = it },
+                label = { Text("Back Text") },
+                isError = uiState.backTextError,
+                modifier = Modifier.fillMaxWidth()
+            )
+            if (uiState.backTextError) {
+                Text(
+                    text = "Back text cannot be blank.",
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Type text field (optional)
+            OutlinedTextField(
+                value = uiState.typeText,
+                onValueChange = { uiState.typeText = it },
+                label = { Text("Type (Optional)") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Row{
+                TextButton(onClick = { navHostController.popBackStack() }) {
+                    Text(text = "back")
+                }
+                Button(
+                    onClick = { viewModel.createFlashcard(setId) },
+                    enabled = !uiState.creationSuccess
+                ) {
+                    Text("Create Flashcard")
+                }
+
+            }
+
+
+            // Success message or error message
+            when {
+                uiState.creationSuccess -> {
+                    Text(
+                        text = "Flashcard created successfully!",
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                    // Optionally navigate back or to a different screen
+                }
+                uiState.errorMessage.isNotEmpty() -> {
+                    Text(
+                        text = uiState.errorMessage,
+                        color = MaterialTheme.colorScheme.error,
+                    )
+                }
             }
         }
-
     }
 }

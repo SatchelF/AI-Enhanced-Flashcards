@@ -1,58 +1,48 @@
 package com.example.cs3200firebasestarter.ui.screens
 
-import android.util.Log
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Create
-import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.cs3200firebasestarter.ui.viewmodels.CreateSetViewModel
-import kotlinx.coroutines.launch
 import com.example.cs3200firebasestarter.ui.components.Flashcard
-import com.example.cs3200firebasestarter.ui.navigation.Routes
-
+import com.example.cs3200firebasestarter.ui.viewmodels.FlashCardScreenViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FlashCardScreen(
     navHostController: NavHostController,
-    setId: String?
+    setId: String?,
+    viewModel: FlashCardScreenViewModel = viewModel()
 ) {
+    // Load flashcards when the screen appears
+    LaunchedEffect(setId) {
+        setId?.let { viewModel.loadFlashcards(it) }
+    }
+
+    val flashcards = viewModel.uiState.flashcards
+    var currentIndex by remember { mutableStateOf(0) }
+
     Box(modifier = Modifier.fillMaxSize()) {
-        // Main content
-        if (setId != null) {
-            Text(text = setId)
-        }
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .weight(1f), // This makes sure that the Box takes up all available space
+                    .weight(1f),
                 contentAlignment = Alignment.TopCenter
             ) {
-                Flashcard()
+                if (flashcards.isNotEmpty()) {
+                    Flashcard(flashcard = flashcards[currentIndex])
+                }
             }
         }
 
@@ -65,39 +55,38 @@ fun FlashCardScreen(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             // Left arrow FAB
-            FloatingActionButton(modifier = Modifier
-                .padding(end = 50.dp)
-                .size(26.dp), onClick = { /* Handle left arrow click */ }) {
+            FloatingActionButton(
+                onClick = {
+                    if (currentIndex > 0) currentIndex--
+                },
+                modifier = Modifier.size(26.dp)
+            ) {
                 Icon(Icons.Default.ArrowBack, contentDescription = "Previous")
             }
+
             // Text in the middle
-            Text(text = "x/x", style = MaterialTheme.typography.headlineSmall)
+            Text(text = "${currentIndex + 1}/${flashcards.size}", style = MaterialTheme.typography.headlineSmall)
+
             // Right arrow FAB
-            FloatingActionButton(modifier = Modifier
-                .padding(start = 50.dp)
-                .size(26.dp),onClick = { /* Handle right arrow click */ }) {
+            FloatingActionButton(
+                onClick = {
+                    if (currentIndex < flashcards.size - 1) currentIndex++
+                },
+                modifier = Modifier.size(26.dp)
+            ) {
                 Icon(Icons.Default.ArrowForward, contentDescription = "Next")
             }
-
         }
-        // Plus FAB at the bottom right for creating a new flashcard
+
+        // Plus FAB for creating a new flashcard
         FloatingActionButton(
-            onClick = {  navHostController.navigate(Routes.createFlashCardScreen.route) },
+            onClick = { navHostController.navigate("createFlashCardScreen?id=${setId}") },
             modifier = Modifier
-                .padding(start = 370.dp, top = 16.dp)
+                .align(Alignment.BottomEnd)
+                .padding(16.dp)
                 .size(30.dp)
         ) {
             Icon(Icons.Default.Create, contentDescription = "Create New Flashcard")
         }
     }
 }
-
-
-
-
-
-
-
-
-
-

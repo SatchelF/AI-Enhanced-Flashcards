@@ -12,5 +12,5 @@ object Routes {
     val home = Screen(route = "home")
     val createSet = Screen("createSet")
     val flashCardScreen = Screen("flashcardScreen")
-    val createFlashCardScreen = Screen("createFlashCard")
+    val createFlashCardScreen = Screen("createFlashCardScreen")
 }

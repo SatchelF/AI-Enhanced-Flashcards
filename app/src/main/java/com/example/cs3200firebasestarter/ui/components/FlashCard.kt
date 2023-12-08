@@ -33,10 +33,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
+import com.example.cs3200firebasestarter.ui.models.Flashcard
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 @Composable
-fun Flashcard() {
+fun Flashcard(flashcard: Flashcard) {
     val rotation = remember { Animatable(0f) }
     val isFlipped = remember { mutableStateOf(false) }
     val displayedText = remember { mutableStateOf("front") }
@@ -50,8 +51,8 @@ fun Flashcard() {
             animationSpec = tween(durationMillis = animationDuration)
         ).apply {
             // Update the text only after the flip animation completes
-            if (isFlipped.value) displayedText.value = "back"
-            else displayedText.value = "front"
+            if (isFlipped.value) displayedText.value = flashcard.back.toString()
+            else displayedText.value = flashcard.front.toString()
         }
     }
 
@@ -86,7 +87,7 @@ fun Flashcard() {
                         .padding(16.dp)
                 ) {
                     Text(
-                        text = "Type",
+                        text = flashcard.type.toString(),
                         modifier = Modifier.align(Alignment.Start),
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
                         style = MaterialTheme.typography.titleLarge

@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
+import com.example.cs3200firebasestarter.ui.components.CreateFlashcardScreen
 import com.example.cs3200firebasestarter.ui.repositories.UserRepository
 import com.example.cs3200firebasestarter.ui.screens.*
 import kotlinx.coroutines.launch
@@ -100,8 +101,12 @@ fun RootNavigation() {
                     ) {navBackStackEntry ->
                         FlashCardScreen(navController, navBackStackEntry.arguments?.get("id").toString())
                     }
-                    composable(route = Routes.createFlashCardScreen.route) { CreateFlashcardScreen(navController) }
-                }
+                    composable(
+                        route = "createFlashCardScreen?id={id}",
+                        arguments = listOf(navArgument("id"){defaultValue = "new"})
+                    ) {navBackStackEntry ->
+                        CreateFlashcardScreen(navController, navBackStackEntry.arguments?.get("id").toString())
+                    }                }
                 navigation(route = Routes.appNavigation.route, startDestination = Routes.home.route) {
                     composable(route = Routes.home.route) { HomeScreen(navController) }
                 }

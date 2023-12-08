@@ -52,6 +52,17 @@ object FlashcardsRepository{
         docRef.set(newFlashcard).await()
         return newFlashcard
     }
+    suspend fun getFlashcards(setId: String): List<Flashcard> {
+        val snapshot = Firebase.firestore
+            .collection("flashcardSets")
+            .document(setId)
+            .collection("flashcards")
+            .get()
+            .await()
+
+        return snapshot.toObjects(Flashcard::class.java)
+    }
+
 
 
 
