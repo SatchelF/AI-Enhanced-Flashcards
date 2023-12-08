@@ -132,14 +132,17 @@ fun FlashCardScreen(
         ) {
             Icon(Icons.Default.Create, contentDescription = "Create New Flashcard")
         }
-        Row(
-            modifier = Modifier
-                .padding(top= 500.dp, end = 35.dp, start = 35.dp)
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text("Time on card: ${elapsedTime}s")
-            Text("Hints requested: $hintCount")
+        if (flashcards.isNotEmpty()) {
+            Row(
+                modifier = Modifier
+                    .padding(top= 500.dp, end = 35.dp, start = 35.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text("Time on card: ${elapsedTime}s")
+                Text("Hints requested: $hintCount")
+            }
         }
+
     }
 }
