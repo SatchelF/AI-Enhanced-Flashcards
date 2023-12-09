@@ -46,7 +46,7 @@ class FlashCardScreenViewModel(application: Application): AndroidViewModel(appli
 
         val request = GptRequest(
             prompt = modifiedPrompt,
-            max_tokens = 20,
+            max_tokens = 50,
             model = "text-davinci-003"
         )
 
