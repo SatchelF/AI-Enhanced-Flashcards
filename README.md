@@ -10,9 +10,9 @@ Prerequisites
 
 
 NOTE: I apologize in advance. Setting up the Firebase project instance may be a bit of a pain. If you get everything set up correctly, running this application should work great. But I get it can be a lot. I have provided a lot of 
-YouTube tutorials are below if you get stuck. I have also created a YouTube video demo of my project just in case you want to check that out instead of setting things up. Thanks, Seth!  Video link: https://www.youtube.com/watch?v=6qvis2pEO0g
+YouTube tutorials are below if you get stuck. I have also created a YouTube video demo of my project just in case you want to check that out instead of setting things up. Thanks!  Video link: https://www.youtube.com/watch?v=6qvis2pEO0g
 
-NOTE: my API key for Open Ai's language model may also expire by the time you get to running this. I have replaced it with a new one as of new to hopefully avoid this issue. 
+NOTE: my API key for Open Ai's language model may also expire by the time you get to run this. I have replaced it with a new one as of new to hopefully avoid this issue. 
 
 Before installing and running the application, ensure you have the following prerequisites installed:
 
