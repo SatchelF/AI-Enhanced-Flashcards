@@ -45,7 +45,7 @@ Setting Up Android Studio and Jetpack Compose
 
 Setting Up Firebase Using Firebase Assistant in Android Studio
 
-NOTE: Professor Ditton here at USU has created a great video on how to hookup your firebawse instance. Here is the link if that helps: https://usu.instructure.com/media_objects/m-MPKzwSdnhpYFpXK9BPL89c8A8E2qX58/redirect?bitrate=218043
+NOTE: Professor Ditton here at USU has created a great video on how to hook up your Firebase instance. Here is the link if that helps: https://usu.instructure.com/media_objects/m-MPKzwSdnhpYFpXK9BPL89c8A8E2qX58/redirect?bitrate=218043
 
 Step 1: Open Firebase Assistant
 
@@ -59,10 +59,10 @@ Step 2: Connect to Firebase
         Select Cloud Firestore, and then select Get Started with Cloud Firestore
         Click on the link for the selected service, such as 'Get started with Cloud Firestore'. This will open a dialog to connect your app to a Firebase project.
         Either select an existing Firebase project or create a new one.
-        Follow the prompts to connect your app to the Firebase project.
+        You can follow the prompts to connect your app to the Firebase project.
 
 
-NOTE: All SDKs should already be added since I added them in my code. But if you are lacking any, click the "Add the cloud firestore sdk to your app" button that appears when you try to connect your app to firebase. 
+NOTE: All SDKs should already be added since I added them in my code. But if you are lacking any, click the "Add the cloud Firestore SDK to your app" button that appears when you try to connect your app to Firebase. 
 
 
 
