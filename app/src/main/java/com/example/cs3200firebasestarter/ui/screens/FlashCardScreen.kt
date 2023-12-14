@@ -1,5 +1,6 @@
 package com.example.cs3200firebasestarter.ui.screens
 
+import android.content.res.Resources
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -14,6 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.cs3200firebasestarter.ui.components.CustomLoadingAnimation
 import com.example.cs3200firebasestarter.ui.components.Flashcard
 import com.example.cs3200firebasestarter.ui.components.toFormattedString
 import com.example.cs3200firebasestarter.ui.viewmodels.FlashCardScreenViewModel
@@ -62,8 +64,13 @@ fun FlashCardScreen(
             ) {
                 // Use uiState properties directly
                 if (uiState.isLoading) {
-                    CircularProgressIndicator()
+                    CustomLoadingAnimation(
+                        size = 50.dp,
+                        color = MaterialTheme.colorScheme.onSecondaryContainer,
+                    )
+                    
                 }
+
 
                 uiState.hint.let { fetchedHint ->
                     if (fetchedHint.isNotBlank()) {
