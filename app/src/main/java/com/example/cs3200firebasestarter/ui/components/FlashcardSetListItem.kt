@@ -19,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.cs3200firebasestarter.ui.models.FlashcardSet
-import com.example.cs3200firebasestarter.ui.navigation.Routes
 import com.google.firebase.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Date

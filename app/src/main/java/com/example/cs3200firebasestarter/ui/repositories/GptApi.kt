@@ -6,8 +6,6 @@ import com.example.cs3200firebasestarter.ui.models.GptResponse
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 interface GptApi {
     @Headers(

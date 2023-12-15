@@ -6,8 +6,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavHostController
 import com.example.cs3200firebasestarter.ui.navigation.Routes
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 
 @Composable
 fun LaunchScreen(navHostController: NavHostController) {
@@ -15,6 +19,26 @@ fun LaunchScreen(navHostController: NavHostController) {
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
+        Row(){
+            // ad here
+
+
+            AndroidView(
+                modifier = Modifier.fillMaxWidth(),
+                factory = { context ->
+                    AdView(context).apply {
+                        setAdSize(AdSize.BANNER)
+                        adUnitId = "ca-app-pub-3940256099942544/6300978111"
+                        loadAd(AdRequest.Builder().build())
+                    }
+
+                }
+            )
+
+
+
+        }
+        Row() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -42,7 +66,9 @@ fun LaunchScreen(navHostController: NavHostController) {
             )
             Button(
                 onClick = { navHostController.navigate(Routes.signUp.route) },
-                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp)
             ) {
                 Text(text = "Create Account")
             }
@@ -53,5 +79,6 @@ fun LaunchScreen(navHostController: NavHostController) {
                 }
             }
         }
+    }
     }
 }

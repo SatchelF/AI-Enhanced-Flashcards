@@ -18,25 +18,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.awaitFirstDown
-import androidx.compose.foundation.gestures.horizontalDrag
-import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.input.pointer.positionChange
 import com.example.cs3200firebasestarter.ui.models.Flashcard
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 @Composable
 fun Flashcard(flashcard: Flashcard,  onGenerateHint: (String, Boolean) -> Unit ) {
     val rotation = remember { Animatable(0f) }

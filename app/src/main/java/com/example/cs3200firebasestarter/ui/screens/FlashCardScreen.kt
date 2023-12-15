@@ -1,7 +1,6 @@
 package com.example.cs3200firebasestarter.ui.screens
 
-import android.content.res.Resources
-import androidx.compose.foundation.clickable
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -11,13 +10,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.cs3200firebasestarter.ui.components.CustomLoadingAnimation
 import com.example.cs3200firebasestarter.ui.components.Flashcard
-import com.example.cs3200firebasestarter.ui.components.toFormattedString
 import com.example.cs3200firebasestarter.ui.viewmodels.FlashCardScreenViewModel
 import kotlinx.coroutines.delay
 
@@ -68,7 +65,7 @@ fun FlashCardScreen(
                         size = 50.dp,
                         color = MaterialTheme.colorScheme.onSecondaryContainer,
                     )
-                    
+
                 }
 
 

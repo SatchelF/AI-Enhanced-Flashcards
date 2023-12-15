@@ -18,6 +18,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
+
+
         }
     }
 
@@ -63,6 +65,7 @@ dependencies {
     // coroutine
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    implementation("com.google.android.gms:play-services-ads:22.6.0")
 
     val lifecycle_version = "2.6.0-alpha01"
     val arch_version = "2.1.0"

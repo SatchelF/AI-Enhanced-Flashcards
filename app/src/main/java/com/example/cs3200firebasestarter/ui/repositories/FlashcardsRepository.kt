@@ -2,7 +2,6 @@ package com.example.cs3200firebasestarter.ui.repositories
 
 import com.example.cs3200firebasestarter.ui.models.Flashcard
 import com.example.cs3200firebasestarter.ui.models.FlashcardSet
-import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
